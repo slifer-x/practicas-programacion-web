@@ -1,0 +1,8 @@
+div {
+	margin: .4em 0;
+}
+
+div label {
+	width: 15%	;
+	float: left;
+}

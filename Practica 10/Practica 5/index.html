@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<title>index</title>
+		<script type="text/javascript" src="valida.js"></script>
+		<link rel="stylesheet" type="text/css" href="acomodar.css" />
+		
+	</head>
+
+	<body>
+		<form method="post" action="" onsubmit="return valida()">
+			<fieldset>	
+				<legend> Datos de usuario</legend>
+			<div>
+				<label for="nick"> Nickname: </label>
+				<input type="text" name="nick" id="nick" />
+			</div>
+			<div>
+				<label for="correo"> E-mail: </label>
+				<input type="email" name="correo" id="correo" />
+			</div>
+			<div>
+				<label for="passwd"> Password: </label>
+				<input type="password" name="passwd" id="passwd" />
+			</div>
+			<div>
+				<label for="repasswd"> Password confirm: </label>
+				<input type="password" name="repasswd" id="repasswd" />
+			</div>
+			
+			<button type="reset"> Limpiar </button>
+			<button type="submit"> Enviar </button>
+			</fieldset>
+		</form>
+	</body>
+</html>
