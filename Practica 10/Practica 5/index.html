@@ -3,35 +3,34 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>index</title>
-		<script type="text/javascript" src="valida.js"></script>
-		<link rel="stylesheet" type="text/css" href="acomodar.css" />
+		<script type="text/javascript" src="js/valida.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/acomodar.css" />
 		
 	</head>
 
 	<body>
-		<form method="post" action="" onsubmit="return valida()">
-			<fieldset>	
-				<legend> Datos de usuario</legend>
-			<div>
-				<label for="nick"> Nickname: </label>
-				<input type="text" name="nick" id="nick" />
+		<form method="post" action="" name="registro">
+			<div id="main">
+				<h1> Datos de usuario </h1>
+					<label for="nick"> Nickname: </label>
+					<input type="text" name="nick" id="nick" required placeholder="Escribe tu nick" pattern="\w{4,20}" />
+					<div class="error" id="error_nick" > Tu nick es incorrecto, vuelve a intentarlo </div>
+					
+					<label for="correo"> E-mail: </label>
+					<input type="email" name="correo" id="correo" required placeholder="Ejemplo: correo@micorreo.com" />
+					<div class="error" id="error_mail" > El correo es incorrecto, vuelve a intentarlo </div>
+					
+					<label for="passwd"> Password: </label>
+					<input type="password" name="passwd" id="passwd" required pattern="\w{8,}" placeholder="Contraseña debe de tener minimo 8 caracteres" />
+					<div class="error" id="error_passwd" > El password es incorrecto, vuelve a intentarlo </div>
+					
+					<label for="repasswd"> Password confirm: </label>
+					<input type="password" name="repasswd" id="repasswd" required placeholder="Escribe nuevamente tu contraseña" />
+					<div class="error" id="error_repasswd" > Los password's son diferentes, vuelve a intentarlo </div>
+					
+					<button type="button" onclick="valida()"> Registrar </button>
+					<button type="submit" name="submit" id="submit" > Submit </button>
 			</div>
-			<div>
-				<label for="correo"> E-mail: </label>
-				<input type="email" name="correo" id="correo" />
-			</div>
-			<div>
-				<label for="passwd"> Password: </label>
-				<input type="password" name="passwd" id="passwd" />
-			</div>
-			<div>
-				<label for="repasswd"> Password confirm: </label>
-				<input type="password" name="repasswd" id="repasswd" />
-			</div>
-			
-			<button type="reset"> Limpiar </button>
-			<button type="submit"> Enviar </button>
-			</fieldset>
 		</form>
 	</body>
 </html>
