@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<title>Practica 6</title>
+</head>
+
+    <body>
+        <label for="nombre"> Nombre: </label>
+        <input type="text" name="nombre" id="nombre" /><br />
+        
+        <label for="direccion"> Direccion: </label>
+        <input type="text" name="direccion" id="direccion" /><br />
+        
+        <label for="telefono"> Telefono: </label>
+        <input type="tel" name="telefono" id="telefono" placeholder="Telefono de 8 a 10 Digitos" required /><button type="button" id="boton" name="boton" style="display: block" onclick="agregar()" ><img src="agregar.png" alt="Agregar" /></button>
+        
+        <label for="bd"> Fecha de nacimiento </label>
+        <input type="date" id="bd" name="bd" />
+        
+        
+        <script>
+			global = 0;
+			function agregar() 
+			{
+				
+					var arregloinput = ["type","name","id", "placeholder"];
+					var arregloinputprop = ["tel","telefono"+global,"menos"+global,"Telefono de 8 a 10 digitos"];
+					var arregloboton = ["type","id","name","onclick"];
+					var arreglobotonprop = ["button","boton"+global,"boton"+global,"eliminar(menos"+global+", label"+global+", boton"+global+")"];
+					
+					var newLabel = document.createElement("label");
+					var newInput = document.createElement("input");
+					var newButton = document.createElement("button");
+					
+					newButton.appendChild(document.createElement("img")).setAttribute("src", "borrar.png");
+					
+					newLabel.appendChild(document.createTextNode("Telefono:"));
+					
+					var padreDe = document.getElementById("boton");
+					
+					for(var i = 0; i < arregloinput.length; i++) {
+						newInput.setAttribute(arregloinput[i],arregloinputprop[i]);	
+					}
+					for(var i = 0; i < arregloboton.length; i++) {
+						newButton.setAttribute(arregloboton[i],arreglobotonprop[i]);	
+					}	
+					
+					newLabel.setAttribute("id","label"+global);
+					newLabel.setAttribute("for","telefono"+global);
+					
+					newButton.style.display="block";
+					
+					padreDe.parentNode.insertBefore(newButton, padreDe.nextSibling);
+					padreDe.parentNode.insertBefore(newInput, padreDe.nextSibling);  
+					padreDe.parentNode.insertBefore(newLabel, padreDe.nextSibling); 
+										
+					global++;
+			}
+			
+			function  eliminar(i, l, b) 
+			{
+				document.body.removeChild(i);
+				document.body.removeChild(l);
+				document.body.removeChild(b);
+			}
+		</script>
+</body>
+</html>
