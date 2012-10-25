@@ -10,7 +10,7 @@
 	$mail->Host = "smtp.gmail.com";
 	$mail->Port = 465;
 	$mail->Username = "manuelolmedo18@gmail.com";
-	$mail->Password = ".KwXy70.";
+	$mail->Password = "fdjkfjdkjdsakjsakj";
 	
 	$mail->From = "aclaraciones@mxcalidad.com";
 	$mail->FromName = "Aclaraciones";
