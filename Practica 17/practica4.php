@@ -8,13 +8,13 @@
 	<body>
 		<?php
 			if($_GET["envio"] == '1') { 
-				echo "<div><img src='bien.png' />El correo se envio con exito</div>";
+				echo "<div><img src='bien.png' />Gracias por contactarnos. Estaremos dando seguimiento a su solicitud</div>";
 			} else if($_GET["envio"] == '0'){
-				echo "<div><img src='error.png' />Error al enviar el correo, vuelva a intentar</div>";
+				echo "<div><img src='error.png' />Error al realizar el envio de sus comentarios, vuelva a intentar</div>";
 			}
 
 		?>
-		<form method="get" action="correo.php">
+		<form method="post" action="correo.php">
 			<label for="nombre">Indique su nombre: </label>
 			<input type="text" id="nombre" name="nombre" /><br />
 			

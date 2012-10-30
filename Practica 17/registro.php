@@ -10,11 +10,11 @@
 	$mail->Host = "smtp.gmail.com";
 	$mail->Port = 465;
 	$mail->Username = "manuelolmedo18@gmail.com";
-	$mail->Password = "000000";
+	$mail->Password = "00000";
 	
 	$mail->From = "aclaraciones@mxcalidad.com";
-	$mail->FromName = "Aclaraciones";
-	$mail->Subject = "Seguimiento a aclaraciones";
+	$mail->FromName = "Registro";
+	$mail->Subject = "Registro de Usuario";
 	
 	$body = '<!DOCTYPE html>
 				<html lang="es">
@@ -26,25 +26,20 @@
 				<body>
 				  <div>
 				    <header>
-				    	<img src="banner.jpg" align="center" alt="Soporte Tecnico"/>
+				    	<h1>&iexcl;Felicidades! Tu cuenta ya se encuentra registrada</h1>
 				    </header>
 				
 				    <div>
-				      <h1>&iexcl;Gracias por contactarnos!</h1>
 				      <p>
-				      	Estamos mejorando cada d&iacute;a para darle el mejor servicio, en cuanto tengamos la informaci&oacute;n solicitada
-				      	referente a su solicitud, se la enviaremos a la brevedad.
+				      	Le confirmamos que su cuenta ya se encuentra actualmente activa y podra acceder a su cuenta con los datos
+				      	que nos proporciono y que le enlistamos.
 				      </p>
 				      <p>
 				      	Sus datos:
 				      	<ul>';
-	$body .= '<li>Nombre: '.$_POST["nombre"] .'</li>';
+	$body .= '<li>Usuario: '.$_POST["nick"] .'</li>';
 	$body .= '<li>Correo: '.$_POST["correo"] .'</li>';
-	$body .= '<li>Telefono: '.$_POST["telefono"].'</li>';	 
-    $body .= '<li>Estado: '.$_POST["estado"].'</li>';
-	$body .= '<li>Colonia: '.$_POST["col"].'</li>';
-    $body .= '<li>Motivo: '.$_POST["temas"].'</li>';
-    $body .= '<li>Comentarios: '.$_POST["comentarios"].'</li>';
+	$body .= '<li>Contraseña: '.$_POST["passwd"].'</li>';	 
 	
 	$body .= '</ul>
 		      </p>
@@ -58,15 +53,14 @@
 		</html>';
 	
 	$mail->Body = $body;
-	$mail->IsHTML(true);
-	$mail->AddEmbeddedImage("banner.jpg");	
-	$mail->AddAddress($_POST["correo"], $_POST["nombre"]);
+	$mail->IsHTML(true);	
+	$mail->AddAddress($_POST["correo"], $_POST["nick"]);
 	
 	if(!$mail->Send()) {
 		//echo "Error ".$mail->ErrorInfo;
-		header("location: ./practica4.php?envio=0");
+		header("location: ./practica5.php?envio=0");
 	} else {
 		//echo "Mensaje enviado con exito";
-		header("location: ./practica4.php?envio=1");
+		header("location: ./practica5.php?envio=1");
 	}	
 ?>
