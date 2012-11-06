@@ -1,0 +1,45 @@
+.error {
+	color: red;
+	font-weight: bold;
+	font-size: .8em;
+	display: inline;
+	font-style: italic;
+	visibility: hidden;
+}
+
+#submit {
+	display: none;
+}
+
+#main {
+	width: 80%;
+	margin: auto;
+}
+
+label, button {
+	clear: both;
+	display: block;
+}
+
+fieldset {
+	width: 80%;	
+}
+
+fieldset#sexo {
+	clear: both;
+	width: 50%;
+	display: inline;
+}
+
+input {
+	float: left;
+	width: 50%;
+}
+
+input.sexo {
+	float: left;
+	width: 1em;
+}
+
+
+
