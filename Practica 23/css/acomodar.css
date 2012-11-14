@@ -1,0 +1,25 @@
+#main {
+	width: 60%;
+	margin: auto;
+}
+
+label, button {
+	display: block;
+}
+
+input {
+	width: 30%
+}
+
+.error {
+	color: red;
+	font-weight: bold;
+	font-size: .8em;
+	display: inline;
+	font-style: italic;
+	visibility: hidden;
+}
+
+#submit {
+	display: none;
+}

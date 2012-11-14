@@ -1,0 +1,108 @@
+<?php
+	//Cargar el archivo
+	require_once("php/usuariosFunciones.php");
+	
+	//Limpiar las entradas
+	$id = $_REQUEST["id"];
+	
+	//Si el id no es valido, no hago la busqueda
+	
+	//Ejecutar la funcion que obtiene los datos de los usuarios
+	$usuario = consultaUsuario($id);
+	
+	if(isset($usuario)) :
+?>
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<title> Completar registro </title>
+		<link rel="stylesheet" type="text/css" href="css/estilos.css" />
+		<link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.8.23.custom.css" />
+		
+		<script type="text/javascript" src="js/valida.js"></script>
+		<script type="text/javascript" src="js/lib.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+				
+		<script>
+			$(function() {
+				$( ".datepicker" ).datepicker({ maxDate: 0});
+			});
+		</script>
+	</head>
+
+	<body>
+		<form method="get" action="php/actualizarUsuario.php" name="myform" enctype="multipart/form-data" >
+			<input type="hidden" name="id_us" value="<?= $usuario['idusuario']; ?>" />
+			<div id="main">
+				<fieldset>
+					<legend> Datos de registro </legend>
+					<label for="usuario">Usuario: </label>
+					<input type="text" id="usuario" name="usuario" value="<?= $usuario['nick']; ?>" disabled />
+					
+					<label for="correo">E-mail: </label>
+					<input type="email" id="correo" name="correo" value="<?= $usuario['correo']; ?>" disabled />
+				</fieldset>
+				
+				<fieldset>
+					<legend> Intereses </legend>
+					<select name="inter" id="inter" size="5" multiple="multiple">
+						<option value="Programacion en web"> Programacion en web</option>
+						<option value="Programacion en C"> Programacion en C</option>
+						<option value="Programacion en Java"> Programacion en Java</option>
+						<option value="Programacion en C#"> Programacion en C#</option>
+						<option value="Programacion en C++"> Programacion en C++</option>
+						<option value="Programacion en Python"> Programacion en Python</option>
+					</select>
+					<div class="error" name="err_int" id="err_int" > Selecciona por lo menos un interes </div>
+				</fieldset>
+				
+				<fieldset>
+					<legend>General</legend>
+					<label for="imagen">Tu foto: </label>
+					<input type="file" id="imagen" name="file" accept="image/*" required />
+					<div class="error" name="err_img" id="err_img" > Debes de seleccionar una imagen </div>
+					<div class="error" name="err_img2" id="err_img2" > El archivo que haz seleccionado no es una imagen </div>
+					
+					<label for="passwd"> Confirma tu contraseña </label>
+					<input type="password" id="passwd" name="passwd" required pattern="\w{8,}" />
+					<div class="error" name="err_psswd" id="err_psswd" > Es necesario que introduzcas tu contraseña y debe de ser minimo de 8 caracteres </div>
+				</fieldset>
+				
+				<fieldset>
+					<legend> Datos básicos </legend>
+					<label for="nombre"> Nombre: </label>
+					<input type="text" name="nombre" id="nombre" required pattern="\w{3}[\w\s]{0,}"  />
+					<div class="error" name="err_name" id="err_name" > Debes de indicar tu nombre </div>
+					
+					<label for="direccion"> Direccion: </label>
+					<input type="text" name="direccion" id="direccion" required pattern="[\w\W\s]{10,50}" />
+					<div class="error" name="err_address" id="err_address" > Debes de indicar una direccion y tiene que ser mas de 10 caracteres</div>
+					
+					<label for="telefono"> Telefono: </label>
+					<input type="tel" name="telefono" id="telefono" required pattern="[0-9]{8,10}" />
+					<div class="error" name="err_tel" id="err_tel" > Debes de indicar un telefono </div>
+					
+					<label for="bd"> Fecha de nacimiento </label>
+					<input class="datepicker" type="text" id="bd" name="bd" required placeholder="Día/Mes/Año" /> 
+					<div class="error" name="err_bd" id="err_bd" > Verifica la fecha de nacimiento </div>
+					
+					<fieldset id="sexo">
+						<legend> Sexo: </legend>
+						<input type="radio" name="sexo" class="sexo" value="M" /> Masculino <br />
+						<input type="radio" name="sexo" class="sexo" value="F" /> Femenino
+					</fieldset>
+					<div class="error" name="err_sx" id="err_sx" > Debes de elegir un sexo </div>
+				</fieldset>
+				
+				<button type="button" onclick="validar();" > Actualizar </button>
+				<button type="submit" id="submit" name="enviar"> Enviar </button> 	
+			</div>
+		</form>
+	</body>
+</html>
+<?php
+endif;
+
+?>

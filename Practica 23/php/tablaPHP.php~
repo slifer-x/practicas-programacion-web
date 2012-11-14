@@ -1,0 +1,51 @@
+<?php
+	include_once("bd.inc");
+	$mysqli = new mysqli($dbhost, $dbuser, $dbpass, $db);
+	
+	if($mysqli -> connect_error)
+		die("Error al conectar con la base de datos.");
+	
+	//Consulta
+	$consult = "SELECT idusuario,nick FROM usuarios";
+	
+	//$consult = $mysqli -> query($consult);
+	
+	$result = $mysqli -> query($consult);
+	
+	$mysqli -> close();
+	
+	//$result = $consult -> fetch_assoc();
+	
+	/*$key = array_keys($result);
+	
+	echo '<table border="1">
+			<thead>
+				<tr>';
+	foreach ($key as $value) {
+		echo "<td>$value</td>";
+	}
+	echo '		</tr>
+			</thead>
+			<tbody>';
+	for ($i = 0; $i < $consult -> num_rows; $i ++) {
+		echo '<tr>'; 
+		foreach($result as $key => $value) {
+			echo "<td>$value</td>";
+		}
+		$result = $consult -> fetch_assoc();
+		echo '</tr>';
+	}
+	echo '	</tbody>
+		  </table>';*/
+	
+	if($result -> num_rows >= 1)
+		while($row = $result -> fetch_assoc())
+			$lista[] = $row;
+			
+	echo '<select>';
+	echo "<option value='0'> Seleccionar </option>";
+	foreach($lista as $fila) {
+		echo "<option value=".$fila['id']."> ".$fila['nick']." </option>";	
+	}
+	echo '</select>';
+?>
